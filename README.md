@@ -4,7 +4,7 @@
 
 ## 安装
 
-`npm install pluginify --save-dev`
+`npm install plugineasy --save-dev`
 
 ## 使用
 
