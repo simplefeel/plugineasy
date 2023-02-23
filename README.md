@@ -15,8 +15,7 @@ pluginManager.register('plugin-a', new APlugin())
 pluginManager.register('plugin-b', new BPlugin())
 
 class APlugin implements Plugin {
-    private pluginManager: PluginManager
-    public apply(pluginManager: PluginManager) {
+    apply(pluginManager) {
         this.pluginManager = pluginManager
         pluginManager.on('start', async (data, next) => {
             console.log('[ data ] >', data + '_a')
@@ -26,8 +25,7 @@ class APlugin implements Plugin {
 }
 
 class BPlugin implements Plugin {
-    private pluginManager: PluginManager
-    public apply(pluginManager: PluginManager) {
+    public apply(pluginManager) {
         this.pluginManager = pluginManager
         pluginManager.on('start', async (data, next) => {
             console.log('[ data ] >', data + '_b')
@@ -36,9 +34,8 @@ class BPlugin implements Plugin {
     }
 }
 
-pluginManager.emitSeries('start', 'Hello').catch((error) => {
-    console.log('[ error ] >', error)
-})
+pluginManager.emitSeries('start', 'Hello').catch((error) => {})
+
 // ouput:
 // [ data ] > Hello_a
 // [ data ] > Hello_b
